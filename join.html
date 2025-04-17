@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join AutoAddicts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #111;
+            color: white;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: black;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            font-size: 19px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #87cefa;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        .logo h1 {
+            font-size: 35px;
+            font-family: 'Avenir', sans-serif;
+        }
+
+        .join-now {
+            padding: 100px 20px 50px;
+            text-align: center;
+            background-color: #0e0d0d;
+            background-image: url(https://wallpapers.com/images/hd/black-car-4k-o3bid1r2nwhb509v.jpg);
+            background-size: cover;
+            background-position: center;
+            margin-top: 60px;
+        }
+
+        .join-now h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .join-now p {
+            font-size: 25px;
+            margin-bottom: 40px;
+        }
+
+        .join-form {
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .join-form label {
+            font-size: 18px;
+        }
+
+        .join-form input,
+        .join-form textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+        }
+
+        .join-form button {
+            padding: 10px;
+            background-color: lightskyblue;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .join-form button:hover {
+            background-color: deepskyblue;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0);
+            color: #ccc;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>AutoAddicts</h1>
+            </div>
+        </nav>
+    </header>
+
+    <section class="join-now">
+        <h2>Join AutoAddicts</h2>
+        <p>Become a part of our passionate community of car enthusiasts!! <br> It doesn't matter if you own a car or not, we respect every car enthusiast.</p>
+
+        <form class="join-form" onsubmit="return validateForm()" method="get">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <div id="name-error" class="error"></div>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <div id="email-error" class="error"></div>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <div id="password-error" class="error"></div>
+
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+            <div id="confirmPassword-error" class="error"></div>
+
+            <button type="submit" class="button">Join Now</button>
+        </form>
+
+        <p style="margin-top: 20px;">Already a member? <a href="login.html" style="color: lightskyblue; text-decoration: underline;">Login</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 AutoAddicts. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function validateForm() {
+            let valid = true;
+
+            // Reset errors
+            document.getElementById('name-error').innerText = '';
+            document.getElementById('email-error').innerText = '';
+            document.getElementById('password-error').innerText = '';
+            document.getElementById('confirmPassword-error').innerText = '';
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Validate name
+            if (name === "") {
+                document.getElementById('name-error').innerText = "Please enter your name.";
+                valid = false;
+            }
+
+            // Validate email
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailPattern.test(email)) {
+                document.getElementById('email-error').innerText = "Please enter a valid email address.";
+                valid = false;
+            }
+
+            // Validate password length
+            if (password.length < 6) {
+                document.getElementById('password-error').innerText = "Password must be at least 6 characters long.";
+                valid = false;
+            }
+
+            // Validate confirm password
+            if (password !== confirmPassword) {
+                document.getElementById('confirmPassword-error').innerText = "Passwords do not match.";
+                valid = false;
+            }
+
+            return valid;
+        }
+    </script>
+</body>
+
+</html>
