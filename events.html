@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Events - AutoAddicts</title>
+    <link rel="stylesheet" href="auto.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .events {
+            margin: 20px;
+            padding: 20px;
+        }
+        .event {
+            border: 1px solid #0af;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .event:hover {
+            scale: 1.05;
+            background: rgb(102, 151, 177);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .event img {
+            width: 150px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .event h3 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .event-details {
+            display: none;
+        }
+        .search-bar {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .search-bar input {
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            border: 1px solid #0af;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #0af;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>AutoAddicts</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="Autoaddicts.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="events">
+        <div class="search-bar"><br><br><br>
+            <input 
+                type="text" 
+                id="eventSearch" 
+                placeholder="Search events by name or location..." 
+                onkeyup="filterEvents()"
+            />
+        </div>
+        
+        <h2>Upcoming Events</h2>
+        <p>Join us for the latest car meets, showcases, and events exclusively for AutoAddicts members.</p>
+
+        <div class="event" onclick="toggleDetails(this)">
+            <img src="https://images.squarespace-cdn.com/content/v1/664d66cee5bf3d606d15777d/93be0ca2-fc76-46cc-ad8e-45a824409554/Poco+car+show-2.jpg" alt="AUTOFAIR 2025">
+            <div>
+                <h3>AUTOFAIR 2025</h3>
+                <div class="event-details">
+                    <p><strong>Date:</strong> January 10 to 13, 2025</p>
+                    <p><strong>Location:</strong> Kanpur</p>
+                    <p>Details: This will feature the latest vehicle innovations, with a focus on electric and hybrid models, attracting industry professionals for networking and showcases.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="event" onclick="toggleDetails(this)">
+            <img src="https://electricvehicles.in/wp-content/uploads/2023/02/mobility-future-cities-electric-car-charging.png" alt="Bharat Mobility Global Expo 2025">
+            <div>
+                <h3>Bharat Mobility Global Expo 2025</h3>
+                <div class="event-details">
+                    <p><strong>Date:</strong> January 17 to 22, 2025</p>
+                    <p><strong>Location:</strong> Yashobhoomi, Dwarka</p>
+                    <p>Details: This expo will spotlight mobility advancements, including electric vehicles, autonomous driving tech, and sustainable mobility solutions.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="event" onclick="toggleDetails(this)">
+            <img src="https://blog.evsolutions.com/hs-fs/hubfs/2023-EVS/HS2022-How%20Electric%20Vehicle%20Battery%20Technology%20Works.png?width=970&height=524&name=HS2022-How%20Electric%20Vehicle%20Battery%20Technology%20Works.png" alt="Global Electrification Mobility Summit (GEMS)">
+            <div>
+                <h3>Global Electrification Mobility Summit (GEMS)</h3>
+                <div class="event-details">
+                    <p><strong>Date:</strong> January 16 to 20, 2025</p>
+                    <p><strong>Location:</strong> New Delhi</p>
+                    <p>Details: This summit will focus on the electrification of transportation and innovations in EV technology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 AutoAddicts. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function toggleDetails(eventElement) {
+            const details = eventElement.querySelector('.event-details');
+            if (details.style.display === 'block') {
+                details.style.display = 'none';
+            } 
+            else {
+                details.style.display = 'block';
+            }
+        }
+
+        function filterEvents() {
+            const searchInput = document.getElementById('eventSearch').value.toLowerCase();
+            const events = document.querySelectorAll('.event');
+            
+            events.forEach(event => {
+                const title = event.querySelector('h3').textContent.toLowerCase();
+                const details = event.querySelector('.event-details').textContent.toLowerCase();
+
+                if (title.includes(searchInput) || details.includes(searchInput)) {
+                    event.style.display = 'flex';
+                } else {
+                    event.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
