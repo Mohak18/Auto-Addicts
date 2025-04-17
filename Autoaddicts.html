@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoAddicts</title>
+    <link rel="stylesheet" href="auto.css">
+    <style>
+        .img {
+            width: 100px;
+            height: 60px;
+            margin-left: 7%;
+            margin-top: 10px
+        }
+
+        .contactus {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 30px;
+            font-size: 15px;
+        }
+
+        .oa p {
+            color: #00aaff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="Logo.jpg" alt="car" class="img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#body-shapes">Body Shapes</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contactus">Contact</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" id="search-bar" placeholder="Search...">
+                <button onclick="performSearch()">Search</button>
+            </div>
+        </nav>
+    </header>
+    <script>
+        function performSearch() {
+            const searchBar = document.getElementById('search-bar');
+            const query = searchBar.value.toLowerCase();
+
+            if (query) {
+                const sections = document.querySelectorAll('section');
+                let found = false;
+
+                sections.forEach(section => {
+                    const textContent = section.textContent.toLowerCase();
+                    if (textContent.includes(query)) {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                        found = true;
+                    }
+                });
+
+                if (!found) {
+                    alert('No results found for: ' + query);
+                }
+            } else {
+                alert('Please enter a search query!');
+            }
+        }
+    </script>
+
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Your Ultimate Car Addiction
+            </h2>
+            <p>Discover the latest trends, news, and updates from the world of cars. Join AutoAddicts today!</p>
+            <a href="join.html" class="button">Join Now</a>
+            <a href="login.html" class="button">Login Now</a><br>
+            <br><a href="events.html" class="button special-button">Upcoming Events!!</a>
+        </div>
+    </section>
+
+    <section id="about" class="about"><br><br>
+        <h2>About AutoAddicts</h2>
+        <p>AutoAddicts is a community for car enthusiasts. From vintage classics to modern supercars, we cover it all.
+            Our mission is to fuel your passion for all things automotive.</p>
+    </section>
+
+    <section id="newsletter" class="newsletter"><br>
+        <div class="newsletter-content">
+            <h2>Subscribe to Our Newsletter</h2>
+            <p>Stay updated with the latest news, events, and promotions from AutoAddicts. Join our community today!</p>
+            <form action="#" method="post">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="body-shapes" class="body-shapes"><br><br>
+        <h2>Car Body Shapes</h2>
+        <div class="shapes-container">
+            <div class="shape" onclick="window.location.href='Sedan.html'">
+                <h3>Sedan</h3>
+                <p>A sedan is a passenger car in a three-box configuration with separate compartments for engine,
+                    passenger, and cargo.</p>
+                <img src="https://previews.123rf.com/images/podsolnukh/podsolnukh1310/podsolnukh131000141/23325092-car-3d-model-body-structure-wire-model.jpg"
+                    alt="Sedan" class="shape-image">
+            </div>
+
+            <div class="shape" onclick="window.location.href='Suv.html'">
+                <h3>SUV</h3>
+                <p>Sport Utility Vehicles (SUVs) are characterized by high ground clearance and off-road capabilities.
+                </p>
+                <img src="https://doschdesign.com/images/prodgallery/40486/20190823_133751-D3D-CarDetails-SUV-Wireframe_rgb_005%20Kopie.jpg"
+                    alt="SUV" class="shape-image">
+
+            </div>
+            <div class="shape" onclick="window.location.href='Coupe.html'">
+                <h3>Coupé</h3>
+                <p>A coupé is a two-door car with a fixed roof and a sporty design, usually with a sloping rear.</p>
+                <img src="https://png.pngtree.com/background/20231117/original/pngtree-3d-car-model-with-detailed-body-structure-picture-image_6301125.jpg"
+                    alt="Coupe" class="shape-image">
+
+            </div>
+            <div class="shape" onclick="window.location.href='Hatchback.html'">
+                <h3>Hatchback</h3>
+                <p>A hatchback is a car with a rear door that swings upward, providing access to the cargo area.</p>
+                <img src="https://www.shutterstock.com/image-illustration/car-model-body-structure-wire-260nw-709450420.jpg"
+                    alt="Hatchback" class="shape-image">
+            </div>
+            <div class="shape" onclick="window.location.href='Convertible.html'">
+                <h3>Convertible</h3>
+                <p>Convertibles have a roof structure that can be either fully or partially retracted, allowing for
+                    open-air driving.</p>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTx1Nd1XU15VrSmdQ5r8e97S5X9V_7k5Aw0u5sALA3ntBLWDf6xPtrWl7W9ynLFTl3-TY&usqp=CAU"
+                    alt="Convertible" class="shape-image">
+            </div>
+            <div class="shape" onclick="window.location.href='PickUpTrucks.html'">
+                <h3>Pickup Truck</h3>
+                <p>A pickup truck has an open cargo area with low sides and a tailgate, suitable for transporting goods.
+                </p>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj1N3R4JIZp2lUzqSBUG4Yrzy-Q66vpxs0AKJmP9A3C7iE-YXRt1D_gktiOrEwVE1rOJY&usqp=CAU"
+                    alt="Pickup Truck" class="shape-image">
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery"><br><br>
+        <h2>Car Gallery</h2>
+
+        <div class="gallery-images">
+            <a href="#img1"><img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb_zd0WOVVBP9Bo2Lrqq6HmrLrdI55IR7GhA&s"
+                    alt="Car 1"></a>
+            <a href="#img2"><img src="https://media.cdn-jaguarlandrover.com/api/v2/images/105240/w/1600/h/650.jpg"
+                    alt="Car 2"></a>
+            <a href="#img3"><img
+                    src="https://c4.wallpaperflare.com/wallpaper/787/33/209/amg-g63-mercedes-benz-wallpaper-preview.jpg"
+                    alt="Car 3"></a>
+            <a href="#img4"><img
+                    src="https://images.pexels.com/photos/8237007/pexels-photo-8237007.jpeg?cs=srgb&dl=pexels-wearelivingart-8237007.jpg&fm=jpg"
+                    alt="Car 4"></a>
+        </div>
+
+        <div id="img1" class="lightbox">
+            <a href="#gallery" class="close">&times;</a>
+            <figure>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb_zd0WOVVBP9Bo2Lrqq6HmrLrdI55IR7GhA&s"
+                    alt="Car 1 Full Size">
+                <figcaption><br>Porsche 911</figcaption>
+                <figcaption>Credits: Harshit K</figcaption>
+            </figure>
+        </div>
+
+        <div id="img2" class="lightbox">
+            <a href="#gallery" class="close">&times;</a>
+            <figure>
+                <img src="https://media.cdn-jaguarlandrover.com/api/v2/images/105240/w/1600/h/650.jpg"
+                    alt="Car 2 Full Size">
+                <figcaption><br>Land Rover Range Rover Defender</figcaption>
+                <figcaption>Credits: Kushal S</figcaption>
+            </figure>
+        </div>
+
+        <div id="img3" class="lightbox">
+            <a href="#gallery" class="close">&times;</a>
+            <figure>
+                <img src="https://c4.wallpaperflare.com/wallpaper/787/33/209/amg-g63-mercedes-benz-wallpaper-preview.jpg"
+                    alt="Car 3 Full Size">
+                <figcaption><br>Mercedes Benz G63 AMG</figcaption>
+                <figcaption>Credits: Druvan Mittal</figcaption>
+            </figure>
+        </div>
+
+        <div id="img4" class="lightbox">
+            <a href="#gallery" class="close">&times;</a>
+            <figure>
+                <img src="https://images.pexels.com/photos/8237007/pexels-photo-8237007.jpeg?cs=srgb&dl=pexels-wearelivingart-8237007.jpg&fm=jpg"
+                    alt="Car 4 Full Size">
+                <figcaption><br>Lamborghini Urus</figcaption>
+                <figcaption>Credits: Aryan Sharma</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section class="upload-section">
+        <h2>Upload Your Car Picture</h2>
+        <p>Share your favorite car photo with us and become a part of our gallery!</p>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="uploaderName">Name:</label>
+                <input type="text" id="uploaderName" name="uploaderName" required>
+            </div>
+            <div class="form-group">
+                <label for="uploaderEmail">Email:</label>
+                <input type="email" id="uploaderEmail" name="uploaderEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="carImage">Upload Car Picture:</label>
+                <input type="file" id="carImage" name="carImage" accept="image/*" required>
+            </div>
+            <br><button type="submit" class="upload-button">Submit Your Photo</button>
+        </form>
+    </section>
+
+    <section id="contactus">
+        <div class="contactus"><br>
+            <div class="cu">
+                Contact Us <br><br>
+                ✉ Email: <br>
+                <a href="mailto:info@autoaddicts.com">info@autoaddicts.com</a> <br>
+                ☎ Phone: <br>
+                <a href="">+91-145638-9823</a>
+            </div>
+            <div class="oa">Office Address <br><br>
+                <p>1st Floor, Taj Towers <br>
+                    Bandra West,Mumbai <br>
+                    400050, India</p>
+            </div>
+            <div class="sm">Social Media <br><br>
+                📷 Instagram: <a href="https://www.instagram.com/autoaddicts.india/">@autoaddict.india</a> <br>
+                𝕏 Twitter/X: <a href="https://x.com/autoaddicts">@autoaddicts</a> <br>
+                ⓕ Facebook: <a href="https://www.facebook.com/autoaddictusa/">facebook.com/autoaddicts</a>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <p>&copy; 2024 AutoAddicts. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>
