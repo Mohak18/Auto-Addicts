@@ -127,6 +127,51 @@
             font-size: 14px;
             margin-top: 10px;
         }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Black background with opacity */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            color: black;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content h2 {
+            margin-bottom: 10px;
+        }
+
+        .modal-content p {
+            margin-bottom: 20px;
+        }
+
+        .modal-content button {
+            padding: 10px 15px;
+            background-color: lightskyblue;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .modal-content button:hover {
+            background-color: deepskyblue;
+        }
     </style>
 </head>
 
@@ -143,7 +188,7 @@
         <h2>Join AutoAddicts</h2>
         <p>Become a part of our passionate community of car enthusiasts!! <br> It doesn't matter if you own a car or not, we respect every car enthusiast.</p>
 
-        <form class="join-form" onsubmit="return validateForm()" method="get">
+        <form class="join-form" onsubmit="return validateForm(event)" method="get">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
             <div id="name-error" class="error"></div>
@@ -160,7 +205,7 @@
             <input type="password" id="confirmPassword" name="confirmPassword" required>
             <div id="confirmPassword-error" class="error"></div>
 
-            <button type="submit" class="button">Join Now</button>
+            <button type="submit">Join Now</button>
         </form>
 
         <p style="margin-top: 20px;">Already a member? <a href="login.html" style="color: lightskyblue; text-decoration: underline;">Login</a></p>
@@ -170,8 +215,17 @@
         <p>&copy; 2024 AutoAddicts. All Rights Reserved.</p>
     </footer>
 
+    <!-- Modal Structure for the Success Notification -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <h2>Success!</h2>
+            <p>You have successfully joined AutoAddicts!</p>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
     <script>
-        function validateForm() {
+        function validateForm(event) {
             let valid = true;
 
             // Reset errors
@@ -210,7 +264,31 @@
                 valid = false;
             }
 
-            return valid;
+            // If the form is valid, show the success modal and redirect after a short delay
+            if (valid) {
+                // Show the success modal
+                showModal();
+
+                // Redirect after a short delay (e.g., 2 seconds)
+                setTimeout(function() {
+                    window.location.href = "Autoaddicts.html"; // Redirect to Autoaddicts.html
+                }, 2000);
+            }
+
+            // Prevent form from submitting normally if the form is not valid
+            event.preventDefault();
+
+            return valid; // Return false to prevent the default form submission
+        }
+
+        // Show the success modal
+        function showModal() {
+            document.getElementById('successModal').style.display = 'flex';
+        }
+
+        // Close the success modal
+        function closeModal() {
+            document.getElementById('successModal').style.display = 'none';
         }
     </script>
 </body>
