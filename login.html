@@ -120,6 +120,51 @@
             background-color: rgba(0, 0, 0, 0);
             color: #ccc;
         }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Black background with opacity */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            color: black;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content h2 {
+            margin-bottom: 10px;
+        }
+
+        .modal-content p {
+            margin-bottom: 20px;
+        }
+
+        .modal-content button {
+            padding: 10px 15px;
+            background-color: lightskyblue;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .modal-content button:hover {
+            background-color: deepskyblue;
+        }
     </style>
 </head>
 <body>
@@ -148,6 +193,15 @@
         <p>&copy; 2024 AutoAddicts. All Rights Reserved.</p>
     </footer>
 
+    <!-- Modal Structure for the Success Notification -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <h2>Login Successful!</h2>
+            <p>Welcome back to AutoAddicts!</p>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
     <script>
         function validateForm() {
             const email = document.getElementById("email").value;
@@ -164,7 +218,25 @@
                 return false;
             }
 
-            return true;
+            // If validation passes, show success modal and redirect after delay
+            showModal();
+
+            // Redirect to Autoaddicts.html after a short delay (e.g., 2 seconds)
+            setTimeout(function() {
+                window.location.href = "Autoaddicts.html";
+            }, 2000);
+
+            return false; // Prevent form submission to keep it on this page while showing modal
+        }
+
+        // Show the success modal
+        function showModal() {
+            document.getElementById('successModal').style.display = 'flex';
+        }
+
+        // Close the success modal
+        function closeModal() {
+            document.getElementById('successModal').style.display = 'none';
         }
     </script>
 </body>
